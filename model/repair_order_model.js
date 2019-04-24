@@ -10,6 +10,7 @@ var repair={
         
     },
     addRepairingOrder:function(item,callback){
+        console.log(item);
         var d=new Date(Date.now());
         return db.query("insert into repair_order_tbl(repair_order_amt,repair_order_date,fk_repair_id) values(?,?,?)",[item.repair_order_amt,d,item.fk_repair_id],callback);
     },

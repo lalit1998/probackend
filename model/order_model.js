@@ -1,7 +1,7 @@
 var db=require('../dbconnection');
 var order={
     getAllOrder:function(callback){
-        return db.query("select * from  order_tbl",callback);
+         return db.query("select * from  order_tbl",callback);
     },
     deleteAllOrder:function(item,callback){
         console.log(item);
@@ -46,8 +46,16 @@ var order={
     getTodaysOrder:function(callback){
          return db.query("select * from order_tbl where order_date=CURDATE()",callback);
     },
-    getTopOrder:function(callback){
+    /*getTopOrder:function(callback){
         return db.query("select * from order_tbl LIMIT 5",callback);
+    },*/
+    getTopOrder:function(callback){
+        return db.query("select * from order_tbl GROUP BY order_amount DESC LIMIT 3",callback);
+    },    
+    getTopFiveSellProduct:function(callback)
+    {
+        return db.query("select p.pro_name,SUM(bd.price)as total,b.date,p.pro_price,p.pro_img,p.pro_id from bill_tbl b,product_tbl p,bill_details_tbl bd WHERE p.pro_id=bd.fk_product_id and b.bill_id=fk_bill_id GROUP BY p.pro_id ORDER BY total DESC LIMIT 5",callback);
     }
+
 };
 module.exports=order;

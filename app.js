@@ -30,6 +30,7 @@ var addrepairing=require('./routes/addrep_route');
 var repair=require('./routes/repair_route');
 var repairorder=require('./routes/repair_order_route');
 var repairorderby=require('./routes/repaibyorder_route');
+var repairorderbyid=require('./routes/repairorderbyid_route');
 var deleteallrepair=require('./routes/deleteallrepairing_route');
 var deletealluser=require('./routes/multideleteuser_route');
 var bill=require('./routes/bill_route');
@@ -48,6 +49,11 @@ var changeqty=require('./routes/changeqty_route');
 var Checkintocart=require('./routes/checkcart_route');
 var billbyuserid=require('./routes/billbyuserid_route');
 var pastorder=require('./routes/past_order_route');
+var topfiveSellProduct=require('./routes/topfivesellproduct_route');
+var wish=require('./routes/wish_route');
+var wishlistbyid=require('./routes/wishlistbyuserid_route');
+var checkwish=require('./routes/checkwish_route');
+var Contact=require('./routes/contact_route');
 var app = express();
 
 // view engine setup
@@ -85,6 +91,8 @@ app.use('/repair',repair);
 app.use('/addrepair',addrepair);
 app.use('/addrepairing',addrepairing);
 app.use('/repairorder',repairorder);
+app.use('/repairorderbyid',repairorderbyid);
+
 app.use('/deleteallrepair',deleteallrepair);
 app.use('/repairorderby',repairorderby);
 app.use('/bill',bill);
@@ -104,7 +112,11 @@ app.use('/changeqty',changeqty);
 app.use('/Checkintocart',Checkintocart);
 app.use('/pastorder',pastorder);
 app.use('/billbyuserid',billbyuserid);
-
+app.use('/topfivesellproduct',topfiveSellProduct);
+app.use('/wishlist',wish);
+app.use('/wishlistbyid',wishlistbyid);
+app.use('/checkwish',checkwish);
+app.use('/contact',Contact);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

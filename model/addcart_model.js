@@ -32,7 +32,7 @@ var Addcart={
         CheckIntoCart:function(item,callback){
             return db.query("select * from  addcart_tbl where fk_user_id=? and fk_pro_id=?",[item.user_id,item.pro_id],callback);
         
-        },
+        }
         
         
 
